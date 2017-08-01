@@ -21,7 +21,7 @@ export const AppContainer = connect(
   function mapStateToProps(state) {
     console.log("state", state);
     return {
-      messages: state.mainReducer.get("messages")
+      messages: state.chat.get("messages")
     };
   },
   function mapDispatchToProps(dispatch) {

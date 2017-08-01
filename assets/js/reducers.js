@@ -29,7 +29,7 @@ function sendMessage(model, payload) {
 }
 
 const phoenixApp = combineReducers({
-  mainReducer
+  chat: mainReducer
 });
 
 export default phoenixApp;
