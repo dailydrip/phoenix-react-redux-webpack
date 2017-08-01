@@ -1,4 +1,6 @@
-# PhoenixReactRedux
+# Phoenix + React + Redux + Webpack
+
+![](Screenshot.png)
 
 To start your Phoenix server:
 
