@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "phoenix": "file:../deps/phoenix",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "immutable": "^3.8.1",
