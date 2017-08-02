@@ -4,7 +4,7 @@ import { List } from "immutable";
 import { combineReducers } from "redux";
 const init = new Model();
 
-type ActionType = "SEND_MESSAGE";
+type ActionType = "SET_START_CHAT" | "GOT_MESSAGE";
 console.log("App");
 
 function mainReducer(
