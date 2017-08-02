@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListMessages from "../components/ListMessages";
 import Actions from "../actions";
+import { Input, Card } from "antd";
+import "antd/dist/antd.css";
 
 function App(props) {
   const { messages, sendMessage, started, startChat } = props;
@@ -9,19 +11,16 @@ function App(props) {
     console.log("Chat not started. Starting it right now.");
     startChat();
   }
-  let input;
   return (
     <div>
       <ListMessages messages={messages} />
-      <input type="text" ref={node => input = node} />
-      <button
-        onClick={() => {
-          sendMessage(input.value);
-          input.value = "";
+      <Input
+        type="text"
+        onPressEnter={e => {
+          sendMessage(e.target.value);
+          e.target.value = "";
         }}
-      >
-        SEND
-      </button>
+      />
     </div>
   );
 }
