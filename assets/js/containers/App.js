@@ -4,13 +4,22 @@ import ListMessages from "../components/ListMessages";
 import Actions from "../actions";
 
 function App(props) {
-  const { messages, sendMessageToChannel } = props;
+  const { messages, sendMessage, started, startChat } = props;
+  if (!started) {
+    console.log("Chat not started. Starting it right now.");
+    startChat();
+  }
   let input;
   return (
     <div>
       <ListMessages messages={messages} />
       <input type="text" ref={node => input = node} />
-      <button onClick={() => sendMessageToChannel(input.value)}>
+      <button
+        onClick={() => {
+          sendMessage(input.value);
+          input.value = "";
+        }}
+      >
         SEND
       </button>
     </div>
@@ -19,16 +28,15 @@ function App(props) {
 
 export const AppContainer = connect(
   function mapStateToProps(state) {
-    console.log("state", state);
     return {
-      messages: state.chat.get("messages")
+      messages: state.chat.get("messages"),
+      started: state.chat.get("started")
     };
   },
   function mapDispatchToProps(dispatch) {
     return {
-      sendMessageToChannel: message => {
-        dispatch(Actions.sendMessage(message));
-      }
+      sendMessage: message => dispatch(Actions.sendMessage(message)),
+      startChat: () => dispatch(Actions.startChat())
     };
   }
 )(App);
