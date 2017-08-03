@@ -2,33 +2,40 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListMessages from "../components/ListMessages";
 import Actions from "../actions";
+import { Input, Card } from "antd";
+import "antd/dist/antd.css";
 
 function App(props) {
-  const { messages, sendMessageToChannel } = props;
-  let input;
+  const { messages, sendMessage, started, startChat } = props;
+  if (!started) {
+    console.log("Chat not started. Starting it right now.");
+    startChat();
+  }
   return (
     <div>
       <ListMessages messages={messages} />
-      <input type="text" ref={node => input = node} />
-      <button onClick={() => sendMessageToChannel(input.value)}>
-        SEND
-      </button>
+      <Input
+        type="text"
+        onPressEnter={e => {
+          sendMessage(e.target.value);
+          e.target.value = "";
+        }}
+      />
     </div>
   );
 }
 
 export const AppContainer = connect(
   function mapStateToProps(state) {
-    console.log("state", state);
     return {
-      messages: state.mainReducer.get("messages")
+      messages: state.chat.get("messages"),
+      started: state.chat.get("started")
     };
   },
   function mapDispatchToProps(dispatch) {
     return {
-      sendMessageToChannel: message => {
-        dispatch(Actions.sendMessage(message));
-      }
+      sendMessage: message => dispatch(Actions.sendMessage(message)),
+      startChat: () => dispatch(Actions.startChat())
     };
   }
 )(App);

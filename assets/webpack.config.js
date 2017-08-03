@@ -48,8 +48,8 @@ module.exports = {
   },
   // And we'll configure our ExtractTextPlugin and CopyWebpackPlugin
   plugins: [
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin("css/app.css")
     // We copy our images and fonts to the output folder
-    new CopyWebpackPlugin([{ from: "./static/images", to: "images" }])
+    //new CopyWebpackPlugin([{ from: "./static/images", to: "images" }])
   ]
 };

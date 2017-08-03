@@ -12,6 +12,8 @@ defmodule PhoenixReactRedux.Application do
       supervisor(PhoenixReactRedux.Repo, []),
       # Start the endpoint when the application starts
       supervisor(PhoenixReactReduxWeb.Endpoint, []),
+      # Presence supervisor
+      # supervisor(PhoenixReactReduxWeb.Presence, [])
       # Start your own worker by calling: PhoenixReactRedux.Worker.start_link(arg1, arg2, arg3)
       # worker(PhoenixReactRedux.Worker, [arg1, arg2, arg3]),
     ]

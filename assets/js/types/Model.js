@@ -4,7 +4,9 @@ import MessageType from "./MessageType";
 
 export default class Model
   extends Record({
-    messages: List()
+    messages: List(),
+    started: false
   }) {
   messages: List<MessageType>;
+  started: boolean;
 }

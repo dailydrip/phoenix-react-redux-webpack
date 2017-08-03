@@ -2,7 +2,7 @@ defmodule PhoenixReactReduxWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", PhoenixReactReduxWeb.RoomChannel
+  channel "room:*", PhoenixReactReduxWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
